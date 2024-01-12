@@ -1,11 +1,15 @@
+using System.Linq;
+
 public class Solution {
     public int[] solution(long n) {
-        char[] chArr = n.ToString().ToCharArray();
-        int[] answer = new int[chArr.Length];
-        int len = chArr.Length;
-        for (int i = 0; i < len; i++) {
-            answer[i] = int.Parse(chArr[len - i - 1].ToString());
+        string nString = new string(n.ToString().ToCharArray().Reverse().ToArray());
+        int[] answer = new int[nString.Length];
+
+        for (int i = 0; i < nString.Length; i++)
+        {
+            answer[i] = int.Parse(nString[i].ToString());
         }
+
         return answer;
     }
 }
