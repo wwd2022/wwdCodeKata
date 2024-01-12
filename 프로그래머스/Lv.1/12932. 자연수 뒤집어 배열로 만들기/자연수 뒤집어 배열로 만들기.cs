@@ -1,14 +1,11 @@
-using System.Linq;
-
 public class Solution {
     public int[] solution(long n) {
-        string nString = new string(n.ToString().ToCharArray().Reverse().ToArray());
-        int[] answer = new int[nString.Length];
+        int[] answer = new int[] {};
 
-        for (int i = 0; i < nString.Length; i++)
-        {
-            answer[i] = int.Parse(nString[i].ToString());
-        }
+        char[] charArray = n.ToString().ToCharArray();
+        System.Array.Reverse(charArray);
+
+        answer = System.Array.ConvertAll(charArray, c => (int)char.GetNumericValue(c));
 
         return answer;
     }
