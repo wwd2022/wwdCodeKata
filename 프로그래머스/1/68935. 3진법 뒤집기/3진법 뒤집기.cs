@@ -1,24 +1,20 @@
 using System;
-using System.Text;
+using System.Collections.Generic;
 using System.Linq;
 
-public class Solution {
-    public long solution(int n) {
-        StringBuilder sb = new StringBuilder();
-        while (n >= 1)
+public class Solution 
+{
+    public int solution(int n) 
+    {
+        List<int> list = new List<int>();
+        while (n != 0)
         {
-            sb.Append(n % 3);
+            list.Add(n % 3);
             n /= 3;
         }
-        var s = sb.ToString().ToArray();
-        long n2 = 0;
-        int j = 0;
-        for (int i = s.Length - 1; i >= 0; i--)
-        {
-            int iii = s[i] - '0';
-            n2 += j != 0 ? iii * (long)(Math.Pow(3, j)) : iii;
-            j++;
-        }
-        return n2;
+
+        list.Reverse();
+
+        return (int)list.Select((x, idx) => x * Math.Pow(3, idx)).Sum();
     }
 }
